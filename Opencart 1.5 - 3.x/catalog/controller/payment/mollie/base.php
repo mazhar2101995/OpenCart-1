@@ -1786,9 +1786,9 @@ class ControllerPaymentMollieBase extends Controller
 
                     $shipmentData['lines'] = $shipmentLine;
                     $mollieShipment = $orderDetails->createShipment($shipmentData);
-                    $this->addOrderHistory($order, $$shipping_status_id, $this->language->get("shipment_success"), true);
+                    $this->addOrderHistory($order, $shipping_status_id, $this->language->get("shipment_success"), true);
                     $this->writeToMollieLog("Shipment created for order - {$order_id}, {$mollie_order_id}");
-                    $order['order_status_id'] = $$shipping_status_id;
+                    $order['order_status_id'] = $shipping_status_id;
                 } catch (Mollie\Api\Exceptions\ApiException $e) {
                     $this->writeToMollieLog("Shipment could not be created for order - {$order_id}, {$mollie_order_id}; " . htmlspecialchars($e->getMessage()));
                 }                
